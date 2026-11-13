@@ -1,0 +1,53 @@
+# typed: false
+# frozen_string_literal: true
+
+# Generated from deploy/homebrew/meridian-desktop.rb.tmpl in OrlojHQ/meridian
+# by scripts/render-homebrew-cask.sh. Do not edit; changes are overwritten on
+# the next release. The CLI formula is separate and is not changed here.
+cask "meridian-desktop" do
+  version "0.7.1"
+  sha256 "f456fa771560f004f35621a9638bf4d400502f6781da7db7b03a4c3546a6a180"
+
+  url "https://github.com/OrlojHQ/meridian/releases/download/v#{version}/meridian-desktop_#{version}_macOS_universal.dmg"
+  name "Meridian"
+  desc "Desktop window for the Meridian coding workspace"
+  homepage "https://github.com/OrlojHQ/meridian"
+
+  app "Meridian.app"
+
+  # The disk image is unsigned. Clearing the quarantine flag is what lets
+  # Gatekeeper open it without the "damaged" refusal. must_succeed is false
+  # because the attribute is already absent on a second install. Nothing is
+  # written inside the bundle, so a future Developer ID signature stays
+  # intact. The app finds this cask's Caskroom directory and offers
+  # `brew upgrade` instead of replacing itself.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Meridian.app"],
+                   must_succeed: false
+  end
+
+  caveats do
+    <<~EOS
+      This desktop build is not code-signed or notarized. After install, the
+      cask removes the com.apple.quarantine flag from Meridian.app.
+
+      If you downloaded the disk image yourself, open it, copy Meridian to
+      Applications, then right-click Meridian and choose Open. Or run:
+        xattr -dr com.apple.quarantine /Applications/Meridian.app
+
+      The app uses a meridiand already answering at 127.0.0.1:8080 and starts
+      its own bundled one only when nothing is there. Both use the same data
+      directory. If you also run the meridian formula, keep the two on the
+      same version:
+        brew upgrade meridian && brew upgrade --cask meridian-desktop
+    EOS
+  end
+
+  zap trash: [
+    "~/Library/Application Support/io.orloj.meridian",
+    "~/Library/Caches/io.orloj.meridian",
+    "~/Library/Logs/io.orloj.meridian",
+    "~/Library/WebKit/io.orloj.meridian",
+  ]
+end

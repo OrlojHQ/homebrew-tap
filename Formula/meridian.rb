@@ -7,28 +7,28 @@
 class Meridian < Formula
   desc "Self-hosted cloud agents in disposable Docker workspaces"
   homepage "https://github.com/OrlojHQ/meridian"
-  version "0.7.2"
+  version "0.8.0"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/OrlojHQ/meridian/releases/download/v0.7.2/meridian_0.7.2_macOS_arm64.tar.gz"
-      sha256 "91b13641a74e0684bd875d12da5afe1042a300f60c6139672fb5d6b880798fb1"
+      url "https://github.com/OrlojHQ/meridian/releases/download/v0.8.0/meridian_0.8.0_macOS_arm64.tar.gz"
+      sha256 "4186c92382b05ec8cbaec34b820b1d3bc95e65d74d178e43c05f7e576d2624c8"
     end
     on_intel do
-      url "https://github.com/OrlojHQ/meridian/releases/download/v0.7.2/meridian_0.7.2_macOS_amd64.tar.gz"
-      sha256 "881ac5bd0ba9acf20cec45172dabbe35e0dcdf1bb6770bce05414400c443355e"
+      url "https://github.com/OrlojHQ/meridian/releases/download/v0.8.0/meridian_0.8.0_macOS_amd64.tar.gz"
+      sha256 "2e485d906c25104c28d2cce900ab02687bdf2ca2896c9503859181e651e69bae"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/OrlojHQ/meridian/releases/download/v0.7.2/meridian_0.7.2_linux_arm64.tar.gz"
-      sha256 "d321a33562ebbc7e3c0d1ce5039dd11e04a600513c7875a7ea37abaaa09ef02c"
+      url "https://github.com/OrlojHQ/meridian/releases/download/v0.8.0/meridian_0.8.0_linux_arm64.tar.gz"
+      sha256 "1276f3ce3883999f2b7b28a38ad38f4971a8d1ad68601b828222fa4ec4ebab5d"
     end
     on_intel do
-      url "https://github.com/OrlojHQ/meridian/releases/download/v0.7.2/meridian_0.7.2_linux_amd64.tar.gz"
-      sha256 "0d34376d892727cabfcf3757deb1f866bb3bda9afb001ced9432540788e0f528"
+      url "https://github.com/OrlojHQ/meridian/releases/download/v0.8.0/meridian_0.8.0_linux_amd64.tar.gz"
+      sha256 "8c6ecf9796f19a33b0952e34fa92b634ff5470e2658543991e9974c6980f5a86"
     end
   end
 

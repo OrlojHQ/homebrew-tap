@@ -7,28 +7,28 @@
 class Meridian < Formula
   desc "Self-hosted cloud agents in disposable Docker workspaces"
   homepage "https://github.com/OrlojHQ/meridian"
-  version "0.11.1"
+  version "0.11.2"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/OrlojHQ/meridian/releases/download/v0.11.1/meridian_0.11.1_macOS_arm64.tar.gz"
-      sha256 "e72c258ae9ae654437e53f4641740e7c3c96f981e3efae16ec39d0c14d0c9563"
+      url "https://github.com/OrlojHQ/meridian/releases/download/v0.11.2/meridian_0.11.2_macOS_arm64.tar.gz"
+      sha256 "45cf4742fe16b9ea77fc2a4c3a16ec39c1a2b0a9cd62f7789e903b67954a8777"
     end
     on_intel do
-      url "https://github.com/OrlojHQ/meridian/releases/download/v0.11.1/meridian_0.11.1_macOS_amd64.tar.gz"
-      sha256 "323609c8cba4364bfb88e136c2a31e4ff750c53f98a2332569f50ca865c7e93e"
+      url "https://github.com/OrlojHQ/meridian/releases/download/v0.11.2/meridian_0.11.2_macOS_amd64.tar.gz"
+      sha256 "e1ccac2d8840062d645c186a794dac30d4dacb75b337a93e3bdce9b6afca096a"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/OrlojHQ/meridian/releases/download/v0.11.1/meridian_0.11.1_linux_arm64.tar.gz"
-      sha256 "2314c6393abcbafee4cd678efb15a029678349013aa26c0b61f335be528e7fab"
+      url "https://github.com/OrlojHQ/meridian/releases/download/v0.11.2/meridian_0.11.2_linux_arm64.tar.gz"
+      sha256 "1def5c99c99cf90668b0798f58c15ecb91cf0d09fa11a18a7e782d5216060fc6"
     end
     on_intel do
-      url "https://github.com/OrlojHQ/meridian/releases/download/v0.11.1/meridian_0.11.1_linux_amd64.tar.gz"
-      sha256 "16674af3e37dead83364e4daf5e2daf1de43538fc53abcb2ea2354706ea885a5"
+      url "https://github.com/OrlojHQ/meridian/releases/download/v0.11.2/meridian_0.11.2_linux_amd64.tar.gz"
+      sha256 "4dfc319febf27e4c7abdabddf8679793be0b4cfcb815d59449561febcd7c1e4d"
     end
   end
 
@@ -47,6 +47,9 @@ class Meridian < Formula
 
   service do
     run [opt_bin/"meridiand", "--provider=docker"]
+    # A service starts with a short PATH. Include the Homebrew prefix so
+    # meridiand can find gh beside other tools installed the same way.
+    environment_variables PATH: "#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
     keep_alive true
     log_path var/"log/meridiand.log"
     error_log_path var/"log/meridiand.log"

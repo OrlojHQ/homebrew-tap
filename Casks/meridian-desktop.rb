@@ -5,8 +5,8 @@
 # by scripts/render-homebrew-cask.sh. Do not edit; changes are overwritten on
 # the next release. The CLI formula is separate and is not changed here.
 cask "meridian-desktop" do
-  version "0.19.0"
-  sha256 "2637e480f5c2ed4a4e4caa3f1b4071a26ee092cb7c0339426e0c46478bce24ef"
+  version "0.20.0"
+  sha256 "90b92b967eb2c2262f3ef9b87580c3189bb44d5db844290248e285b51e74b3b3"
 
   url "https://github.com/OrlojHQ/meridian/releases/download/v#{version}/meridian-desktop_#{version}_macOS_universal.dmg"
   name "Meridian"
